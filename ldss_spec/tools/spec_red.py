@@ -19,7 +19,7 @@ class SpecRed():
     This class runs a few methods over a data set defined in an python dictionary.
     """
 
-    def __init__(self, raw_path, red_path, obs_log_file, fit_continuum=False):
+    def __init__(self, raw_path, red_path, obs_log_file, flat_correction=True, fit_continuum=False):
 
         project_dir = os.path.abspath(os.path.dirname(os.path.dirname((os.path.dirname(__file__)))))
         os.system('export PYTHONPATH={}'.format(project_dir))
@@ -42,6 +42,10 @@ class SpecRed():
 
         if fit_continuum:
             self.fit_continuum = True
+
+        if flat_correction:
+            self.flat_correction = True
+
 
         ## Getting disp solution dictionary.
         # Keys are the names of the files inside tye dispsol folder
